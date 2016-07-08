@@ -12,5 +12,6 @@ Ex1 e = new Ex1();
 e.doA("aaaa");
 %>
 <h1>index.jsp</h1>
+<a href="test.do?str=bbb">aaaaaaaaaaaaaaaa</a>
 </body>
 </html>
