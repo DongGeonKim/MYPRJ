@@ -1,0 +1,33 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CSS3 트랜스폼과 트랜지션</title>
+	<style>
+	
+		#pic {		
+			margin-left:50px;
+		}
+		
+		#pic:hover {
+			transform-origin:left top;
+			-webkit-transform-origin:left top;
+			-moz-transform-origin:left top;
+			
+			transform:scale(1.5);
+			-webkit-transform:scale(1.5);
+			-moz-transform:scale(1.5);
+			
+			box-shadow:5px 5px 3px black;
+			
+			transition:all 1s;
+			-webkit-transition:all 1s;
+			-moz-transition:all 1s;
+		}
+	</style>
+</head>
+<body>
+	<p>사진 위로 마우스 포인터를 올려 보세요</p>	
+	<img src="lake.jpg" id="pic">	
+</body>
+</html>
