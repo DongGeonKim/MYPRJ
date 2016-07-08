@@ -7,7 +7,7 @@
 	<artifactId>ch02-jpa-start1</artifactId>
 	<version>1.0-SNAPSHOT</version>
 
-	<properties>
+	<properties> 
 
 		<!-- 기본 설정 -->
 		<java.version>1.8</java.version>
