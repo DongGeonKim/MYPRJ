@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.global.bsg.user.dao.UserDao">
+	
+	<select id="selectTestUser" parameterType="testUserDto" resultType="testUserDto">
+		SELECT SEQ, ID, PW, USER_NAME, REG_DATE, MOD_DATE FROM TEST_USER WHERE ID = #{id}
+	</select>
+	
+	<select id="selectTestUserRole" parameterType="testUserDto" resultType="testUserRoleDto">
+		SELECT TEST_USER_SEQ, USER_ROLE FROM TEST_USER_ROLE WHERE TEST_USER_SEQ = #{seq}
+	</select>
+	
+</mapper>
