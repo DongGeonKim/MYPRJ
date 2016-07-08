@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="copy war files to target"  >
+<target name="copy war files to target">
+  <echo message="copy war files to target"/>
+  <copy11 file="C:\workspace_web\DongWhaPrj\target/dw-1.0.0-BUILD-SNAPSHOT.war" tofile="C:\workspace_web\DongWhaPrj\target/dw.war"/>
+</target>
+</project>

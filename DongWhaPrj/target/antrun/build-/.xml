@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="/"  >
+<target name="/">
+  <echo message="copy war files to target"/>
+  <copy11 file="C:\workspace_web\DongWhaPrj\target/ROOT.war" tofile="C:\workspace_web\DongWhaPrj\target/ROOT1.war"/>
+</target>
+</project>

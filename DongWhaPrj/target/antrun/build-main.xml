@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <echo>C:\workspace_webprj\DongWhaPrj\target</echo>
+  <echo>dw-1.0.0-BUILD-SNAPSHOT</echo>
+  <echo>2016-06-23 084607</echo>
+  <ftp server="52.79.188.237" password="pas$w0r" remotedir="HanbulCS/2016-06-23 084607" depends="yes" action="mkdir" userid="legacy" verbose="no"/>
+  <ftp server="52.79.188.237" password="pas$w0r" remotedir="/HanbulCS/2016-06-23 084607" action="send" userid="legacy">
+    <fileset dir="C:\workspace_webprj\DongWhaPrj\target">
+      <include name="dw-1.0.0-BUILD-SNAPSHOT.war"/>
+    </fileset>
+  </ftp>
+</target>
+</project>
