@@ -13,7 +13,7 @@ import javax.persistence.Persistence;
 public class JpaMain {
 
     public static void main(String[] args) {
-
+ 
         //엔티티 매니저 팩토리 생성
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpabook");
         EntityManager em = emf.createEntityManager(); //엔티티 매니저 생성
