@@ -15,7 +15,8 @@ public class Member {
 
     @Id
     @Column(name = "ID")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     @Column(name = "NAME", nullable = false, length = 10) //추가 //**
 //    @Column(name = "NAME") //추가 //**
@@ -24,6 +25,7 @@ public class Member {
     private Integer age;
 
     //=== 추가
+    @Column(name = "ROLE_TYPE")
     @Enumerated(EnumType.STRING)
     private RoleType roleType;
 
@@ -42,19 +44,19 @@ public class Member {
 
     //Getter, Setter
 
-    public String getId() {
-        return id;
-    }
+    public int getId() {
+		return id;
+	}
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+	public void setUsername(String username) {
         this.username = username;
     }
 

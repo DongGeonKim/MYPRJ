@@ -33,22 +33,23 @@ public class JpaMain {
         emf.close(); //엔티티 매니저 팩토리 종료
     }
 
-    public static void logic(EntityManager em) {
+    public static void logic(EntityManager em) throws Exception {
 
-        String id = "id1";
         Member member = new Member();
-        member.setId(id);
+        
         member.setUsername("지한");
         member.setAge(2);
 
         //등록
         em.persist(member);
-
+        
+        System.out.println("member id : " + member.getId());
+        
         //수정
         member.setAge(20);
-
+        
         //한 건 조회
-        Member findMember = em.find(Member.class, id);
+        Member findMember = em.find(Member.class, member.getId());
         System.out.println("findMember=" + findMember.getUsername() + ", age=" + findMember.getAge());
 
         //목록 조회
