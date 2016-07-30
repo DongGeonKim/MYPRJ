@@ -1,7 +1,23 @@
 package jpabook.start;
 
-import javax.persistence.*;  //**
 import java.util.Date;
+
+//**
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
 
 /**
  * User: HolyEyE
@@ -18,10 +34,13 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;
+    
     @Column(name = "NAME", nullable = false, length = 10) //추가 //**
-//    @Column(name = "NAME") //추가 //**
     private String username;
-
+    
     private Integer age;
 
     //=== 추가
@@ -51,8 +70,16 @@ public class Member {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+    public Team getTeam() {
+		return team;
+	}
 
-    public String getUsername() {
+	public void setTeam(Team team) {
+		this.team = team;
+	}
+
+	public String getUsername() {
         return username;
     }
 

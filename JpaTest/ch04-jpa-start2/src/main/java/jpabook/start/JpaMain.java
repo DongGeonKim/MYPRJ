@@ -34,12 +34,16 @@ public class JpaMain {
     }
 
     public static void logic(EntityManager em) throws Exception {
-
+    	
+    	Team team = new Team();
+    	team.setTeamName("TEAM1");
+    	em.persist(team);
+    	
         Member member = new Member();
         
         member.setUsername("지한");
         member.setAge(2);
-
+        member.setTeam(team);
         //등록
         em.persist(member);
         
@@ -50,14 +54,26 @@ public class JpaMain {
         
         //한 건 조회
         Member findMember = em.find(Member.class, member.getId());
-        System.out.println("findMember=" + findMember.getUsername() + ", age=" + findMember.getAge());
-
+        System.out.println("findMember=" + findMember.getUsername() + ", age=" + findMember.getAge() + ", team=" + findMember.getTeam() + ", team_id=" + findMember.getTeam().getTeamId());
         //목록 조회
         List<Member> members = em.createQuery("select m from Member m", Member.class).getResultList();
-        System.out.println("members.size=" + members.size());
-
+        System.out.println("목록 조회...");
+        for(Member m : members){
+        	System.out.println("members = " + m.getId() + ":" + m.getTeam().getTeamId());
+        }
+        
+        //외래키 수정
+        team = em.find(Team.class, 17);	//team_id가 17이 있을 경우(없을경우 다른 있는것으로 수정)
+        member.setTeam(team);
+        
+        //수정된 목록 조회
+        members = em.createQuery("select m from Member m", Member.class).getResultList();
+        System.out.println("외래키 수정된 목록 조회...");
+        for(Member m : members){
+        	System.out.println("members = " + m.getId() + ":" + m.getTeam().getTeamId());
+        }
         //삭제
-        em.remove(member);
+        //em.remove(member);
 
     }
 }
