@@ -42,13 +42,21 @@ public class JpaMain {
     	em.persist(team);
     	teamId = team.getTeamId();
     	
-        Member member = new Member();
-        member.setUsername("지한");
+    	Member member = new Member();
+        member.setUsername("지한1");
         member.setAge(2);
         member.setTeam(team);
         team.getMemberList().add(member);	//양방향 연관관계이므로 주인이 아닌 곳에도 값을 입력해준다.
         //등록
         em.persist(member);
+        
+        Member member2 = new Member();
+        member2.setUsername("지한2");
+        member2.setAge(2);
+        member2.setTeam(team);
+        team.getMemberList().add(member2);	//양방향 연관관계이므로 주인이 아닌 곳에도 값을 입력해준다.
+        //등록
+        em.persist(member2);
         
         System.out.println("member id : " + member.getId());
         
