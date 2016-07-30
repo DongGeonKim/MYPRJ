@@ -35,9 +35,12 @@ public class JpaMain {
 
     public static void logic(EntityManager em) throws Exception {
     	
+    	int teamId = 0;
+    	
     	Team team = new Team();
     	team.setTeamName("TEAM1");
     	em.persist(team);
+    	teamId = team.getTeamId();
     	
         Member member = new Member();
         
@@ -55,6 +58,16 @@ public class JpaMain {
         //한 건 조회
         Member findMember = em.find(Member.class, member.getId());
         System.out.println("findMember=" + findMember.getUsername() + ", age=" + findMember.getAge() + ", team=" + findMember.getTeam() + ", team_id=" + findMember.getTeam().getTeamId());
+        
+        System.out.println("teamId : " + teamId);
+        Team teamResult = em.find(Team.class, teamId);
+        System.out.println("팀에 속해있는 회원 목록 조회...");
+        System.out.println("size : " + teamResult.getMemberList().size());
+        for(Member m : teamResult.getMemberList()){
+        	System.out.println("member id : " + m.getId() + " member name : " + m.getUsername());
+        }
+        
+        
         //목록 조회
         List<Member> members = em.createQuery("select m from Member m", Member.class).getResultList();
         System.out.println("목록 조회...");
@@ -63,9 +76,9 @@ public class JpaMain {
         }
         
         //외래키 수정
-        team = em.find(Team.class, 17);	//team_id가 17이 있을 경우(없을경우 다른 있는것으로 수정)
-        if(team != null){
-        	member.setTeam(team);
+        Team updateTeam = em.find(Team.class, 17);	//team_id가 17이 있을 경우(없을경우 다른 있는것으로 수정)
+        if(updateTeam != null){
+        	member.setTeam(updateTeam);
         }
         
         //수정된 목록 조회
@@ -74,8 +87,7 @@ public class JpaMain {
         for(Member m : members){
         	System.out.println("members = " + m.getId() + ":" + m.getTeam().getTeamId());
         }
-        //삭제
-        //em.remove(member);
-
+        
+       
     }
 }
