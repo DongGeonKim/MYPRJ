@@ -64,7 +64,9 @@ public class JpaMain {
         
         //외래키 수정
         team = em.find(Team.class, 17);	//team_id가 17이 있을 경우(없을경우 다른 있는것으로 수정)
-        member.setTeam(team);
+        if(team != null){
+        	member.setTeam(team);
+        }
         
         //수정된 목록 조회
         members = em.createQuery("select m from Member m", Member.class).getResultList();
