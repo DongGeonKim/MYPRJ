@@ -38,14 +38,15 @@ public class JpaMain {
     	
     	Team team = new Team();
     	team.setTeamName("TEAM1");
+        //등록
     	em.persist(team);
     	teamId = team.getTeamId();
     	
         Member member = new Member();
-        
         member.setUsername("지한");
         member.setAge(2);
         member.setTeam(team);
+        team.getMemberList().add(member);	//양방향 연관관계이므로 주인이 아닌 곳에도 값을 입력해준다.
         //등록
         em.persist(member);
         
