@@ -18,7 +18,6 @@ public class JpaMain {
 
         try {
 
-
             tx.begin(); //트랜잭션 시작
             logic(em);  //비즈니스 로직
             tx.commit();//트랜잭션 커밋
@@ -57,18 +56,25 @@ public class JpaMain {
         
         //한 건 조회
         Member findMember = em.find(Member.class, member.getId());
-        System.out.println("findMember=" + findMember.getUsername() + ", age=" + findMember.getAge() + ", team=" + findMember.getTeam() + ", team_id=" + findMember.getTeam().getTeamId());
+        System.out.println("findMember=" + findMember.getUsername() + ", age=" + findMember.getAge() + 
+        		", team=" + findMember.getTeam() + ", team_id=" + findMember.getTeam().getTeamId());
         
        
         //목록 조회
+        System.out.println("----------------");
         List<Member> members = em.createQuery("select m from Member m", Member.class).getResultList();
-        System.out.println("목록 조회...");
+        System.out.println("멤버 목록 조회...");
         for(Member m : members){
         	System.out.println("members = " + m.getId() + ":" + m.getTeam().getTeamId());
         }
-        
+        List<Team> teams = em.createQuery("select t from Team t", Team.class).getResultList();
+        System.out.println("팀 목록 조회...");
+        for(Team t : teams){
+        	System.out.println("team_id = " + t.getTeamId() + ":" + t.getTeamName());
+        }
+        System.out.println("----------------");
         //외래키 수정
-        Team updateTeam = em.find(Team.class, 17);	//team_id가 17이 있을 경우(없을경우 다른 있는것으로 수정)
+        Team updateTeam = em.find(Team.class, 22);	//team_id가 22이 있을 경우(없을경우 다른 있는것으로 수정)
         if(updateTeam != null){
         	member.setTeam(updateTeam);
         }
@@ -83,11 +89,9 @@ public class JpaMain {
         System.out.println("teamId : " + teamId);
         Team teamResult = em.find(Team.class, teamId);
         System.out.println("팀에 속해있는 회원 목록 조회...");
-        System.out.println("size : " + teamResult.getMemberList().size());
+        System.out.println("team_id : " + teamResult.getTeamId() + " size : " + teamResult.getMemberList().size());
         for(Member m : teamResult.getMemberList()){
         	System.out.println("member id : " + m.getId() + " member name : " + m.getUsername());
         }
-        
-        
     }
 }
