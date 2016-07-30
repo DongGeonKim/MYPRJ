@@ -42,10 +42,21 @@ public class JpaMain {
     	em.persist(team);
     	teamId = team.getTeamId();
     	
+    	
+    	Locker locker = new Locker();
+    	locker.setLockerName("사물함1");
+    	em.persist(locker);			//등록
+    	
+    	Locker locker2 = new Locker();
+    	locker2.setLockerName("사물함2");
+    	em.persist(locker2);		//등록
+    	
+    	
     	Member member = new Member();
         member.setUsername("지한1");
         member.setAge(2);
         member.setTeam(team);
+        member.setLocker(locker);
         team.getMemberList().add(member);	//양방향 연관관계이므로 주인이 아닌 곳에도 값을 입력해준다.
         //등록
         em.persist(member);
@@ -54,6 +65,7 @@ public class JpaMain {
         member2.setUsername("지한2");
         member2.setAge(2);
         member2.setTeam(team);
+        member2.setLocker(locker2);
         team.getMemberList().add(member2);	//양방향 연관관계이므로 주인이 아닌 곳에도 값을 입력해준다.
         //등록
         em.persist(member2);
@@ -66,7 +78,8 @@ public class JpaMain {
         //한 건 조회
         Member findMember = em.find(Member.class, member.getId());
         System.out.println("findMember=" + findMember.getUsername() + ", age=" + findMember.getAge() + 
-        		", team=" + findMember.getTeam() + ", team_id=" + findMember.getTeam().getTeamId());
+        		", team=" + findMember.getTeam() + ", team_id=" + findMember.getTeam().getTeamId() + 
+        		", locker_id=" + findMember.getLocker().getLockerId() + ", locker_name=" + findMember.getLocker().getLockerName());
         
        
         //목록 조회
@@ -92,7 +105,7 @@ public class JpaMain {
         members = em.createQuery("select m from Member m", Member.class).getResultList();
         System.out.println("외래키 수정된 목록 조회...");
         for(Member m : members){
-        	System.out.println("members = " + m.getId() + ":" + m.getTeam().getTeamId());
+        	System.out.println("members = " + m.getId() + ":" + m.getTeam().getTeamId() + ":" + m.getLocker().getLockerName());
         }
         
         System.out.println("teamId : " + teamId);

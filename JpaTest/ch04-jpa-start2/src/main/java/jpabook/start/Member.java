@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -37,6 +38,10 @@ public class Member {
     @ManyToOne
     @JoinColumn(name = "TEAM_ID")
     private Team team;
+    
+	@OneToOne
+	@JoinColumn(name = "LOCKER_ID")
+	private Locker locker;
     
     @Column(name = "NAME", nullable = false, length = 10) //추가 //**
     private String username;
@@ -77,6 +82,14 @@ public class Member {
 
 	public void setTeam(Team team) {
 		this.team = team;
+	}
+	
+	public Locker getLocker() {
+		return locker;
+	}
+
+	public void setLocker(Locker locker) {
+		this.locker = locker;
 	}
 
 	public String getUsername() {
