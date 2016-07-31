@@ -99,7 +99,7 @@ public class JpaMain {
         Team updateTeam = em.find(Team.class, 22);	//team_id가 22이 있을 경우(없을경우 다른 있는것으로 수정)
         if(updateTeam != null){
         	member.setTeam(updateTeam);
-        }
+        } 
         
         //수정된 목록 조회
         members = em.createQuery("select m from Member m", Member.class).getResultList();
