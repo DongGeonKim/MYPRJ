@@ -36,28 +36,28 @@ public class JpaMain {
     	
     	int teamId = 0;
     	
+    	Member member = new Member();
+        member.setUsername("지한1");
+        member.setAge(2);
+
+        Member member2 = new Member();
+        member2.setUsername("지한2");
+        member2.setAge(2);
+
     	Team team = new Team();
     	team.setTeamName("TEAM1");
+    	
+    	member.setTeam(team);
+        team.getMemberList().add(member);	//양방향 연관관계이므로 주인이 아닌 곳에도 값을 입력해준다.
+        member2.setTeam(team);
+        team.getMemberList().add(member2);	//양방향 연관관계이므로 주인이 아닌 곳에도 값을 입력해준다.
+        
         //등록
     	em.persist(team);
     	teamId = team.getTeamId();
 
     	
-    	Member member = new Member();
-        member.setUsername("지한1");
-        member.setAge(2);
-        member.setTeam(team);
-        team.getMemberList().add(member);	//양방향 연관관계이므로 주인이 아닌 곳에도 값을 입력해준다.
-        //등록
-        em.persist(member);
-        
-        Member member2 = new Member();
-        member2.setUsername("지한2");
-        member2.setAge(2);
-        member2.setTeam(team);
-        team.getMemberList().add(member2);	//양방향 연관관계이므로 주인이 아닌 곳에도 값을 입력해준다.
-        //등록
-        em.persist(member2);
+    	
         
         System.out.println("member id : " + member.getId());
         
@@ -66,6 +66,7 @@ public class JpaMain {
         
         //한 건 조회
         Member findMember = em.find(Member.class, member.getId());
+        //Member findMember = em.getReference(Member.class, member.getId()); //지연로딩(여기에서 D에 SELECT하지 않고 이 객체를 사용하는 아래 코드에서 DB에 접근해 SELECT한다.)
         System.out.println("findMember=" + findMember.getUsername() + ", age=" + findMember.getAge() + 
         		", team=" + findMember.getTeam() + ", team_id=" + findMember.getTeam().getTeamId());
         
