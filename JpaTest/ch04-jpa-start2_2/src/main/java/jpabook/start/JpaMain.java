@@ -105,8 +105,10 @@ public class JpaMain {
         	System.out.println("member id : " + m.getId() + " member name : " + m.getUsername());
         }
         
-        /* 삭제 예제
+        /*
+        //삭제 예제
         em.remove(teamResult.getMemberList().remove(0));
+        //teamResult.getMemberList().remove(0);	//mappedBy="team"에 orphanRemoval=true 옵션 추가해야 가능함.
         
         System.out.println("teamId : " + teamId);
         teamResult = em.find(Team.class, teamId);
