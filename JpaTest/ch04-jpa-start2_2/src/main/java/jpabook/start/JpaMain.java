@@ -85,10 +85,10 @@ public class JpaMain {
         }
         System.out.println("----------------");
         //외래키 수정
-        Team updateTeam = em.find(Team.class, 22);	//team_id가 22이 있을 경우(없을경우 다른 있는것으로 수정)
+        /*Team updateTeam = em.find(Team.class, 22);	//team_id가 22이 있을 경우(없을경우 다른 있는것으로 수정)
         if(updateTeam != null){
         	member.setTeam(updateTeam);
-        } 
+        } */
         
         //수정된 목록 조회
         members = em.createQuery("select m from Member m", Member.class).getResultList();
@@ -104,5 +104,17 @@ public class JpaMain {
         for(Member m : teamResult.getMemberList()){
         	System.out.println("member id : " + m.getId() + " member name : " + m.getUsername());
         }
+        
+        /* 삭제 예제
+        em.remove(teamResult.getMemberList().remove(0));
+        
+        System.out.println("teamId : " + teamId);
+        teamResult = em.find(Team.class, teamId);
+        System.out.println("팀에 속해있는 회원 목록 조회...");
+        System.out.println("team_id : " + teamResult.getTeamId() + " size : " + teamResult.getMemberList().size());
+        for(Member m : teamResult.getMemberList()){
+        	System.out.println("member id : " + m.getId() + " member name : " + m.getUsername());
+        }*/
+        
     }
 }
