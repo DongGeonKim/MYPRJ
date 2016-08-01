@@ -66,7 +66,7 @@ public class JpaMain {
         
         //한 건 조회
         Member findMember = em.find(Member.class, member.getId());
-        //Member findMember = em.getReference(Member.class, member.getId()); //지연로딩(여기에서 D에 SELECT하지 않고 이 객체를 사용하는 아래 코드에서 DB에 접근해 SELECT한다.)
+        //Member findMember = em.getReference(Member.class, member.getId()); //지연로딩(여기에서 DB에 SELECT하지 않고 이 객체를 사용하는 아래 코드에서 DB에 접근해 SELECT한다.)
         System.out.println("findMember=" + findMember.getUsername() + ", age=" + findMember.getAge() + 
         		", team=" + findMember.getTeam() + ", team_id=" + findMember.getTeam().getTeamId());
         
