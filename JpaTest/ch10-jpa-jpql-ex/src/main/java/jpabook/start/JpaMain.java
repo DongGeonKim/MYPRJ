@@ -61,7 +61,7 @@ public class JpaMain {
        
         //목록 조회
         System.out.println("----------------");
-        List<Member> members = em.createQuery("select m from Member m", Member.class).getResultList();
+        List<Member> members = em.createQuery("select m from Member1 m", Member.class).getResultList();
         System.out.println("멤버 목록 조회...");
         for(Member m : members){
         	System.out.println("members = " + m.getId() + ":" + m.getTeam().getTeamId());
