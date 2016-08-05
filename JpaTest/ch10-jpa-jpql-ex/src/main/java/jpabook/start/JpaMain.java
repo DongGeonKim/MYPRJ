@@ -33,40 +33,25 @@ public class JpaMain {
     }
 
     public static void logic(EntityManager em) throws Exception {
-    	
-    	Member member = new Member();
-        member.setUsername("지한1");
-        member.setAge(2);
-
-        Member member2 = new Member();
-        member2.setUsername("지한2");
-        member2.setAge(2);
-
-    	Team team = new Team();
-    	team.setTeamName("TEAM1");
-    	
-    	member.setTeam(team);
-        team.getMemberList().add(member);	//양방향 연관관계이므로 주인이 아닌 곳에도 값을 입력해준다.
-        member2.setTeam(team);
-        team.getMemberList().add(member2);	//양방향 연관관계이므로 주인이 아닌 곳에도 값을 입력해준다.
-        
-        //등록
-    	em.persist(team);
-    	
-        //한 건 조회
-        Member findMember = em.find(Member.class, member.getId());
-        System.out.println("findMember=" + findMember.getUsername() + ", age=" + findMember.getAge() + 
-        		", team=" + findMember.getTeam() + ", team_id=" + findMember.getTeam().getTeamId());
-        
-       
-        //목록 조회
-        System.out.println("----------------");
-        List<Member> members = em.createQuery("select m from Member1 m", Member.class).getResultList();
-        System.out.println("멤버 목록 조회...");
+    	    	
+    	String query = "SELECT m FROM Member m  JOIN m.team t "
+    			+ "WHERE t.teamName = :teamName";
+    	List<Member> members = em.createQuery(query, Member.class).setParameter("teamName", "TEAM2").getResultList();
+        System.out.println("조인 조회...");
         for(Member m : members){
-        	System.out.println("members = " + m.getId() + ":" + m.getTeam().getTeamId());
+        	System.out.println("member_id = " + m.getId() + " | team_id = " + m.getTeam().getTeamId());
         }
         
+        System.out.println("------------------------");
         
+        query = "SELECT m,t FROM Member m  JOIN m.team t "
+    			+ "WHERE t.teamName = :teamName";
+    	List<Object[] > resultList = em.createQuery(query).setParameter("teamName", "TEAM2").getResultList();
+        System.out.println("멤버 목록 조회...");
+        for(Object[] row : resultList){
+        	Member m = (Member) row[0];
+        	Team   t = (Team) row[1];
+        	System.out.println("member_id = " + m.getId() + " | team_id = " + t.getTeamId());
+        }
     }
 }
