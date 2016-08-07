@@ -34,6 +34,19 @@
 			<artifactId>hibernate-jpamodelgen</artifactId>
 			<version>1.3.0.Final</version>
 		</dependency>
+		<!-- Query DSL -->
+		<dependency>
+			<groupId>com.mysema.querydsl</groupId>
+			<artifactId>querydsl-jpa</artifactId>
+			<version>3.6.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mysema.querydsl</groupId>
+			<artifactId>querydsl-apt</artifactId>
+			<version>3.6.3</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- // Query DSL -->
 		<dependency>
 			<groupId>microsoft</groupId>
 			<artifactId>sqljdbc</artifactId>
@@ -52,6 +65,24 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
+			<!-- queryDSL 자바클래스 자동생성 -->
+			<plugin>
+				<groupId>com.mysema.maven</groupId>
+				<artifactId>apt-maven-plugin</artifactId>
+				<version>1.1.3</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>process</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>target/generated-sources/querydsl</outputDirectory>
+							<processor>com.mysema.query.apt.jpa.JPAAnnotationProcessor</processor>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- // queryDSL 자바클래스 자동생성 -->
 		</plugins>
 	</build>
 
