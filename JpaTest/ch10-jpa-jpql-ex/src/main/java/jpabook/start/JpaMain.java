@@ -1,14 +1,12 @@
 package jpabook.start;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Expression;
+
+
+import com.mysema.query.jpa.impl.JPAUpdateClause;
 
 /**
  * @author holyeye
@@ -128,6 +126,7 @@ public class JpaMain {
         	
         	System.out.println("member_id = " + id + " | age = " + age);
         }*/
-      
+    	
+    	
     }
 }
