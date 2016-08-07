@@ -115,5 +115,13 @@ public class JpaMain {
         for(Member m : teamResult.getMemberList()){
         	System.out.println("member id : " + m.getId() + " member name : " + m.getUsername());
         }
+        
+        System.out.println("teamId : " + teamId);
+        Team teamResult2 = em.createQuery("select t from Team t where t.teamId = :teamId", Team.class).setParameter("teamId", teamId).getSingleResult();
+        System.out.println("팀에 속해있는 회원 목록 조회...");
+        System.out.println("team_id : " + teamResult2.getTeamId() + " size : " + teamResult2.getMemberList().size());
+        for(Member m : teamResult2.getMemberList()){
+        	System.out.println("member id : " + m.getId() + " member name : " + m.getUsername());
+        }
     }
 }
