@@ -61,7 +61,7 @@ public class JpaMain {
         member.setAge(2);
         member.setTeam(team);
         member.setLocker(locker);
-        //team.getMemberList().add(member);	//양방향 연관관계이므로 주인이 아닌 곳에도 값을 입력해준다.
+        team.getMemberList().add(member);	//양방향 연관관계이므로 주인이 아닌 곳에도 값을 입력해준다.
         //등록
         em.persist(member);
         
@@ -70,7 +70,7 @@ public class JpaMain {
         member2.setAge(2);
         member2.setTeam(team);
         member2.setLocker(locker2);
-        //team.getMemberList().add(member2);	//양방향 연관관계이므로 주인이 아닌 곳에도 값을 입력해준다.
+        team.getMemberList().add(member2);	//양방향 연관관계이므로 주인이 아닌 곳에도 값을 입력해준다.
         //등록
         em.persist(member2);
         

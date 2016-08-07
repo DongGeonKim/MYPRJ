@@ -45,6 +45,13 @@
 			<artifactId>querydsl-apt</artifactId>
 			<version>3.6.3</version>
 			<scope>provided</scope>
+			<!-- 
+			<scope>
+			 * compile(기본값) : 컴파일 시에 라이브라리를 사용한다.
+			 * runtime : 실행 시 라이브러리를 사용한다.
+			 * provided : 외부에서 라이브러리가 제공된다. 즉, 컴파일 시 사용하지만 빌드에 포함하지 않는다.(war파일에 해당 jar는 포함되지 않는다.)
+			 * test : 테스트 코드에만 사용한다. 
+			 -->
 		</dependency>
 		<!-- // Query DSL -->
 		<dependency>
