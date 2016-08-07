@@ -1,6 +1,10 @@
 package jpabook.start;
 
 import javax.persistence.*;
+
+import org.hibernate.FlushMode;
+import org.hibernate.annotations.FlushModeType;
+
 import java.util.List;
 
 /**
@@ -57,7 +61,7 @@ public class JpaMain {
         member.setAge(2);
         member.setTeam(team);
         member.setLocker(locker);
-        team.getMemberList().add(member);	//양방향 연관관계이므로 주인이 아닌 곳에도 값을 입력해준다.
+        //team.getMemberList().add(member);	//양방향 연관관계이므로 주인이 아닌 곳에도 값을 입력해준다.
         //등록
         em.persist(member);
         
@@ -66,11 +70,11 @@ public class JpaMain {
         member2.setAge(2);
         member2.setTeam(team);
         member2.setLocker(locker2);
-        team.getMemberList().add(member2);	//양방향 연관관계이므로 주인이 아닌 곳에도 값을 입력해준다.
+        //team.getMemberList().add(member2);	//양방향 연관관계이므로 주인이 아닌 곳에도 값을 입력해준다.
         //등록
         em.persist(member2);
         
-        System.out.println("member id : " + member.getId());
+        /*System.out.println("member id : " + member.getId());
         
         //수정
         member.setAge(20);
@@ -107,6 +111,7 @@ public class JpaMain {
         for(Member m : members){
         	System.out.println("members = " + m.getId() + ":" + m.getTeam().getTeamId() + ":" + m.getLocker().getLockerName());
         }
+        */
         
         System.out.println("teamId : " + teamId);
         Team teamResult = em.find(Team.class, teamId);
@@ -123,5 +128,13 @@ public class JpaMain {
         for(Member m : teamResult2.getMemberList()){
         	System.out.println("member id : " + m.getId() + " member name : " + m.getUsername());
         }
+        
+        System.out.println("----------------");
+        List<Member> members = em.createQuery("select m from Member m where m.team.teamId = :teamId", Member.class).setParameter("teamId", teamId).getResultList();
+        System.out.println("멤버 목록 조회...");
+        for(Member m : members){
+        	System.out.println("members = " + m.getId() + ":" + m.getTeam().getTeamId());
+        }
+        
     }
 }
