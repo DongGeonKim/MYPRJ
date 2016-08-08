@@ -5,8 +5,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-
-import com.mysema.query.jpa.impl.JPAUpdateClause;
+import jpabook.start.domain.item.Book;
+import jpabook.start.domain.item.Item;
 
 /**
  * @author holyeye
@@ -127,6 +127,11 @@ public class JpaMain {
         	System.out.println("member_id = " + id + " | age = " + age);
         }*/
     	
-    	
+    	Book book = new Book();
+    	book.setName("aaa");
+    	book.setAuthor("author");
+    	Item item = book;
+        //등록
+        em.persist(item);
     }
 }

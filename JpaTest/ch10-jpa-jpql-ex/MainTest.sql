@@ -15,6 +15,19 @@ create table TEAM (
     TEAM_NAME varchar(255), 
     primary key (TEAM_ID) 
     );
+
+
+CREATE TABLE dbo.Item (
+    DTYPE          VARCHAR(31) NOT NULL, 
+    ITEM_ID        BIGINT IDENTITY(1,1) NOT NULL, 
+    name           VARCHAR(255), 
+    author         VARCHAR(255), 
+    isbn           VARCHAR(255), 
+    actor          VARCHAR(255), 
+    director       VARCHAR(255), 
+    artist         VARCHAR(255)
+);
+    
     
 INSERT INTO dbo.MEMBER
   ( age, createdDate, description, lastModifiedDate, ROLE_TYPE, NAME, TEAM_ID, LOCKER_ID)
