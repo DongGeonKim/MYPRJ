@@ -61,7 +61,7 @@ public class JpaMain {
         member.setAge(2);
         member.setTeam(team);
         member.setLocker(locker);
-        team.getMemberList().add(member);	//양방향 연관관계이므로 주인이 아닌 곳에도 값을 입력해준다.
+        //team.getMemberList().add(member);	//양방향 연관관계이므로 주인이 아닌 곳에도 값을 입력해준다.
         //등록
         em.persist(member);
         
@@ -70,7 +70,7 @@ public class JpaMain {
         member2.setAge(2);
         member2.setTeam(team);
         member2.setLocker(locker2);
-        team.getMemberList().add(member2);	//양방향 연관관계이므로 주인이 아닌 곳에도 값을 입력해준다.
+        //team.getMemberList().add(member2);	//양방향 연관관계이므로 주인이 아닌 곳에도 값을 입력해준다.
         //등록
         em.persist(member2);
         
@@ -113,6 +113,9 @@ public class JpaMain {
         }
         */
         
+        em.flush(); //추가
+        em.clear(); //추가
+        
         System.out.println("teamId : " + teamId);
         Team teamResult = em.find(Team.class, teamId);
         System.out.println("팀에 속해있는 회원 목록 조회...");
@@ -121,6 +124,7 @@ public class JpaMain {
         	System.out.println("member id : " + m.getId() + " member name : " + m.getUsername());
         }
         
+        System.out.println("-------------------------");
         System.out.println("teamId : " + teamId);
         Team teamResult2 = em.createQuery("select t from Team t where t.teamId = :teamId", Team.class).setParameter("teamId", teamId).getSingleResult();
         System.out.println("팀에 속해있는 회원 목록 조회...");
@@ -129,12 +133,12 @@ public class JpaMain {
         	System.out.println("member id : " + m.getId() + " member name : " + m.getUsername());
         }
         
-        System.out.println("----------------");
+        /*System.out.println("----------------");
         List<Member> members = em.createQuery("select m from Member m where m.team.teamId = :teamId", Member.class).setParameter("teamId", teamId).getResultList();
         System.out.println("멤버 목록 조회...");
         for(Member m : members){
         	System.out.println("members = " + m.getId() + ":" + m.getTeam().getTeamId());
-        }
+        }*/
         
     }
 }
