@@ -116,13 +116,13 @@ public class JpaMain {
         em.flush(); //추가
         em.clear(); //추가
         
-        System.out.println("teamId : " + teamId);
+        /*System.out.println("teamId : " + teamId);
         Team teamResult = em.find(Team.class, teamId);
         System.out.println("팀에 속해있는 회원 목록 조회...");
         System.out.println("team_id : " + teamResult.getTeamId() + " size : " + teamResult.getMemberList().size());
         for(Member m : teamResult.getMemberList()){
         	System.out.println("member id : " + m.getId() + " member name : " + m.getUsername());
-        }
+        }*/
         
         System.out.println("-------------------------");
         System.out.println("teamId : " + teamId);
