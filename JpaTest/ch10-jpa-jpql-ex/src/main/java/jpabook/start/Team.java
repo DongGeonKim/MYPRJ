@@ -24,7 +24,7 @@ public class Team {
 	@Column(name="TEAM_NAME")
 	private String teamName;
 	
-	@OneToMany(mappedBy="team", cascade=CascadeType.PERSIST)
+	@OneToMany(mappedBy="team", cascade=CascadeType.PERSIST, fetch=FetchType.LAZY)
 	private List<Member> memberList = new ArrayList<Member>();
 	
 	public int getTeamId() {

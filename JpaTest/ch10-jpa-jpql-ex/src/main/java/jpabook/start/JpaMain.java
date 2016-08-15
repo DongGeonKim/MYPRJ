@@ -1,12 +1,11 @@
 package jpabook.start;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-
-import jpabook.start.domain.item.Book;
-import jpabook.start.domain.item.Item;
 
 /**
  * @author holyeye
@@ -127,11 +126,22 @@ public class JpaMain {
         	System.out.println("member_id = " + id + " | age = " + age);
         }*/
     	
-    	Book book = new Book();
+    	/*Book book = new Book();
     	book.setName("aaa");
     	book.setAuthor("author");
     	Item item = book;
         //등록
-        em.persist(item);
+        em.persist(item);*/
+    	
+    	 System.out.println("------------------------");
+         query = "SELECT t FROM Team t join fetch t.memberList";
+ 		
+         List<Team> teams = em.createQuery(query, Team.class).getResultList();
+         System.out.println("페치 조인 조회...");
+         for(Team t : teams){
+        	 System.out.println("---------------------------------");
+         	System.out.println(t + ":"+ t.getMemberList().size());
+         	
+         }
     }
 }
