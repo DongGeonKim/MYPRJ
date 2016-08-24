@@ -49,10 +49,15 @@ function selectSapTestList(){
 	    }
 	});
 }
+
+function goTestResult(met){
+	$("#testForm").attr("method", met);
+	$("#testForm").submit();
+}
 </script>
 </head>
 <body>
-	<h3>메인 페이지...</h3>
+	<h3>메인 페이지...<%=request.getScheme()+":"+request.getServerName()+":"+request.getServerPort()%></h3>
 	<a href="javascript:void(0);" onclick="javascript:selectSysdate();">오늘 날짜 2초 후에 가져오기</a>
 	<div id="sysdate"></div>
 	<br/>
@@ -63,7 +68,18 @@ function selectSapTestList(){
 	
 	<a href="javascript:void(0);" onclick="javascript:selectSapTestList();">Sap 호출 데이터 가져오기</a>
 	<div id="sapResult"></div>
+	<br/><br/>
 	
+	<form id="testForm" action="/formTest">
+		<input type="text" name="str" maxlength="10" value="aaaaa">
+	</form>
+	<a href="javascript:void(0);" onclick="javascript:goTestResult('get');">get 보내기</a>
+	<a href="javascript:void(0);" onclick="javascript:goTestResult('post');">post 보내기</a>
+	<br/>
+	
+	<form action="/restTest">
+		<input type="submit" value="REST TEST">
+	</form>
 </body>
 
 

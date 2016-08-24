@@ -7,10 +7,18 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 
 import com.mh.dw.test.dto.DbTestDto;
 import com.mh.dw.test.service.TestService;
@@ -22,6 +30,9 @@ public class TestController {
 	
 	@Autowired
 	private TestService testServiceImpl;
+	
+	@Autowired
+	private RestTemplate restTemplate;
 	
 	@RequestMapping(value = "/selectSysdate.json")
 	public @ResponseBody Map<String, String> selectSysdateJson(){
@@ -67,5 +78,41 @@ public class TestController {
 		return "test/testSapResultAjax";
 	}
 	
+	@RequestMapping(value = "/formTest")
+	public String formTest(Model model){
+		logger.info("TestController... formTest...");
+		
+		return "testResult";
+	}
 	
+	@RequestMapping(value = "/restTest")
+	public String restTest(Model model){
+		logger.info("TestController... restTest...");
+		
+		Map<String, String> params = new HashMap<>();
+		params.put("str", "restTestStr");
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		
+		HttpEntity<Map> entity = new HttpEntity<Map>(params, headers);
+		
+		ResponseEntity<Map> response = restTemplate.exchange("http://localhost/restDeleteTest/{str}", HttpMethod.DELETE, entity, Map.class, params);
+		Map result = response.getBody();
+		System.out.println(result.get("result"));
+		model.addAttribute("str", result.get("result"));
+		return "testResult";
+	}
+	
+	@RequestMapping(value = "/restDeleteTest/{str}", method = RequestMethod.DELETE)
+	public @ResponseBody Map restDeleteTest(@PathVariable String str){
+		logger.info("TestController... restDeleteTest...");
+		
+		System.out.println("str : " + str);
+		
+		Map<String, Boolean> result = new HashMap<>();
+		result.put("result", Boolean.TRUE);
+		
+		return result;
+	}
 }

@@ -11,6 +11,8 @@
 	
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	
+	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
+	
 	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
 		<property name="contentNegotiationManager">
 			<bean class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
