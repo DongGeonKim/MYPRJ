@@ -3,22 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <title>ex1</title>
-</head>
+<style>
+div {
+	width: 60px;
+	height: 60px;
+	margin: 5px;
+	float: left;
+}
+</style>
+<script type="text/javascript" src="jquery-1.11.0.js"></script>
 <script type="text/javascript">
-var DoA = function(){
-	this.al = function(a){
-		alert(a);
-	}
+window.onload = function(){
+	$("div").click(function() {
+		var color = $( this ).css( "background-color" );
+		  $( "#result" ).html( color );
+});	
 	
+
 }
 
-
-DoA.al('aa');
 </script>
+</head>
+
 <body>
-<div style="border:solid 1px; height: 200px;">
-	<div style="border:solid 1px; float: left;">aaaaaaa</div>
-	<div style="border:solid 1px; float: left;">aaaaaaa</div>
-</div>
+	<span id="result">&nbsp;</span>
+	<div style="background-color: blue;"></div>
+	<div style="background-color: rgb(15, 99, 30);"></div>
+	<div style="background-color: #123456;"></div>
+	<div style="background-color: #f11;"></div>
+
 </body>
 </html>
