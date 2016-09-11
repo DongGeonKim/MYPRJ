@@ -13,15 +13,17 @@ div {
 </style>
 <script type="text/javascript" src="jquery-1.11.0.js"></script>
 <script type="text/javascript">
-window.onload = function(){
+
+window.onload = function() {
 	$("div").click(function() {
-		var color = $( this ).css( "background-color" );
-		  $( "#result" ).html( color );
-});	
-	
+		var color = $(this).css("background-color");
+		$("#result").html(color);
+	});
 
 }
 
+var h = new Function("name", "age", "alert(name + ':' + age + '된다.');");
+h("nnn", "aaa");
 </script>
 </head>
 

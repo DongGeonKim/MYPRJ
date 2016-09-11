@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex1</title>
+<style>
+
+</style>
+<script type="text/javascript" src="jquery-1.11.0.js"></script>
+<script type="text/javascript">
+var aaa = {
+	test:function(str){
+		alert(str);
+	}
+}
+aaa.test('aaa');
+
+function bbb(){
+	this.test = function(str){
+		alert(str);
+	}
+}
+var bb = new bbb();
+bb.test('bbb');
+
+var ccc = function(str){
+	alert(str);
+}
+
+</script>
+</head>
+
+<body>
+	
+</body>
+</html>
