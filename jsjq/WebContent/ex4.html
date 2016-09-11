@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex4</title>
+<style>
+
+</style>
+<script type="text/javascript" src="jquery-1.11.0.js"></script>
+<script type="text/javascript">
+
+function doA(){
+	var cnt = 0;
+	function doB(){
+		cnt++;
+		return cnt;
+	}
+	return doB;
+}
+function doB(){
+	var res = doA();
+	alert(res());
+	alert(res());
+	alert(res());
+	//document.write(res() + "<br>");
+	//document.write(res() + "<br>");
+	//document.write(res() + "<br>");
+		
+}
+
+
+</script>
+</head>
+
+<body>
+	<a href="javascript:void(0);" id="btn1" onclick="javascript:doB();">a111aa</a>
+</body>
+</html>

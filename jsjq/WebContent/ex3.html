@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex1</title>
+<style>
+
+</style>
+<script type="text/javascript" src="jquery-1.11.0.js"></script>
+<script type="text/javascript">
+function aaa(str, callback){
+	var temp = str;
+	return callback(temp);
+}
+
+function res(str){
+	setInterval(function(){
+		document.write(str + "***<br>");	
+	}, 3000);
+}
+
+window.onload = function(){
+	aaa("aaaa", res);
+	document.write("aaaaaaaaaaaa!!!<br>");
+}
+
+</script>
+</head>
+
+<body>
+	
+</body>
+</html>

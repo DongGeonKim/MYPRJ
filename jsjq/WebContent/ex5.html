@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex4</title>
+<style>
+
+</style>
+<script type="text/javascript" src="jquery-1.11.0.js"></script>
+<script type="text/javascript">
+
+function doA(){
+	var cnt = 0;
+	function doB(){
+		cnt++;
+		return cnt;
+	}
+	return doB;
+}
+function doB(){
+	var res = doA();
+	alert(res());
+	alert(res());
+	alert(res());
+	//document.write(res() + "<br>");
+	//document.write(res() + "<br>");
+	//document.write(res() + "<br>");
+		
+}
+
+
+window.onload = function(){
+	var ccc = 0;
+	 $("#btn1").click(function() {
+		 ccc++;
+		 alert("ccc : " + ccc);
+         doB();
+     });
+}
+
+function offEv(){
+	$("#btn1").off("click");
+}
+
+function onEv(){
+	var ccc = 0;
+	$("#btn1").click(function() {
+		 ccc++;
+		 alert("ccc : " + ccc);
+        doB();
+    });
+}
+
+</script>
+</head>
+
+<body>
+	<a href="javascript:void(0);" id="btn1">a222aa</a>
+	<br>
+	<a href="javascript:void(0);" onclick="offEv();">끄기</a>
+	<a href="javascript:void(0);" onclick="onEv();">켜기</a>
+</body>
+</html>
