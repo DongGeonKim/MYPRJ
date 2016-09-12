@@ -14,34 +14,32 @@
         <script type="text/javascript" src=" http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script> -->
         <script src="../../libs/jquery-1.11.0.min.js"></script>
         <script>
-
-            /*
-             예제 02: ready() 메서드 사용법 4가지
-             jQuery에서 ready()를 이용해서 진입점을 설정하는 방법은 다음과 같이 4가지 방법이 있습니다.
-            */
-
+			
+			window.onload = function(){
+				alert("안녕하세요. jQuery에 온 걸 환영합니다.0"); 
+			}
 
             // 방법1
             jQuery(document).ready(function(){
-                alert("안녕하세요. jQuery에 온 걸 환영합니다.");
+                alert("안녕하세요. jQuery에 온 걸 환영합니다.4");
             });
 
             // 방법2
             // 방법1을 간소화
             jQuery(function(){
-                alert("안녕하세요. jQuery에 온 걸 환영합니다.");
+                alert("안녕하세요. jQuery에 온 걸 환영합니다.3");
             });
 
             // 방법3
             // 방법1에서 jQuery함수 대신 $함수로 변경
             $(document).ready(function(){
-                alert("안녕하세요. jQuery에 온 걸 환영합니다.");
+                alert("안녕하세요. jQuery에 온 걸 환영합니다.2");
             });
 
             // 방법4
             // 방법3을 간소화
             $(function(){
-                alert("안녕하세요. jQuery에 온 걸 환영합니다.");
+                alert("안녕하세요. jQuery에 온 걸 환영합니다.1");
             });
             
         </script>

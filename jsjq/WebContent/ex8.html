@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex4</title>
+<style>
+
+</style>
+<script type="text/javascript" src="jquery-1.11.0.js"></script>
+<script type="text/javascript">
+var goleFishList = [];
+window.onload = function(){
+	goleFishList.push({index : 1,position : 300});
+	goleFishList.push({index : 2,position : 200});
+	goleFishList.push({index : 3,position : 250});
+	goleFishList.sort(function(a, b) {
+		return b.position > a.position;
+	});
+	
+	for(var i=0; i<goleFishList.length; i++){
+		alert(goleFishList[i].index + ":" + goleFishList[i].position);
+	}
+	
+}
+
+</script>
+</head>
+
+<body>
+	
+</body>
+</html>
