@@ -11,8 +11,13 @@
              */
             var menuItems = ["menu1", "menu2", "menu3", "menu4"];
             console.log("실행 전 : " + menuItems.join(","));
+            
+            var menuItems2 = menuItems; 
             menuItems.push("new");
+            
             console.log("실행 후 : " + menuItems.join(","));
+            console.log("실행 후 : " + menuItems2.join(","));
+            console.log("실행 후 : " + menuItems2.indexOf("menu1"));
 
         </script>
 

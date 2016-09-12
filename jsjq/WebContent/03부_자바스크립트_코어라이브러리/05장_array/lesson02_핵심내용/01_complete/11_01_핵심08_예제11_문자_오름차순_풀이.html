@@ -11,7 +11,11 @@
              */
             var userNames = ["영희", "철수", "미자", "진수", "딴동네"];
             console.log("실행 전 : " + userNames.join(","));
-            userNames.sort();
+            userNames.sort(function(a,b){return a>b});
+            //userNames.sort();
+            console.log("실행 후 : " + userNames.join(","));
+            userNames.sort(function(a,b){return b>a});
+            //userNames.sort();
             console.log("실행 후 : " + userNames.join(","));
 
         </script>
