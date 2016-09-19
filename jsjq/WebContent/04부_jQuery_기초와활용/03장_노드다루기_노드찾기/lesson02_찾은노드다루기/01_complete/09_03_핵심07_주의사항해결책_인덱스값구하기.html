@@ -26,12 +26,13 @@
              $대상.index(대상DOM);
 
              */
+       	  var $aList = $("ul li a");
+             $(document).ready(function() {
 
-            $(document).ready(function() {
-                $("ul  li a").click(function(){
-                    alert("index ="+$aList.index(this));
-                })
-            });
+             	$aList.click(function(){
+                     alert("index ="+$aList.index(this));
+                 });
+             });
 
         </script>
     </head>
@@ -44,5 +45,7 @@
             <li><a href="#">menu4</a></li>
         </ul>
     </body>
+	<script type="text/javascript">
 
+	</script>
 </html>
