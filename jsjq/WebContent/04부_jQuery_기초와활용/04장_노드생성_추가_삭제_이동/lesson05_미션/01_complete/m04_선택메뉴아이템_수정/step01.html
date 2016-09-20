@@ -91,9 +91,15 @@
         // 메뉴 선택 처리
         function selectItem($item){
             // 기존 선택 메뉴 아이템이 있는 경우 선택 효과 제거
-            if($selectedItem!=null)
+            
+            if($selectedItem!=null){
+            	if($selectedItem.index() == $item.index()){
+            		$selectedItem.removeClass("select");
+            		$selectedItem = null;
+            		return;
+            	}
                 $selectedItem.removeClass("select");
-
+            }
             // 신규 선택 메뉴 아이템 처리
             $selectedItem = $item;
             $selectedItem.addClass("select");
@@ -103,7 +109,8 @@
         // 메뉴 항목 이름 수정 하기
         function updateMenuItem(){
             if($selectedItem){
-                  var menuName = $menuName.val();
+                var menuName = $menuName.val();
+                
                 $selectedItem.html(menuName);
             }else{
                 alert("선택 메뉴가 존재 하지 않습니다.")

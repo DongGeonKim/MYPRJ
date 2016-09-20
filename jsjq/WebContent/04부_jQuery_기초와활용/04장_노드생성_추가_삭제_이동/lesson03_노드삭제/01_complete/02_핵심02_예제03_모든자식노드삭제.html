@@ -27,9 +27,14 @@
         예제03: 삭제 버튼을 클릭하면 실행 후 화면처럼 ul.menu의 전체 자식노드를 지워 주세요.
         
          */
+         var obj = null;
             $(document).ready(function() {
                 $("#remove").click(function() {
-                    $("ul.menu").children().remove();
+                	obj = $("ul.menu").children();
+                    obj.remove();
+                    alert(obj.html());
+                	//$("ul.menu").children().html("");
+                	//$("ul.menu").children().text("");
                 })
             });
 
