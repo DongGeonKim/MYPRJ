@@ -32,17 +32,19 @@
                 $("#remove").click(function() {
                 	obj = $("ul.menu").children();
                     obj.remove();
-                    alert(obj.html());
                 	//$("ul.menu").children().html("");
                 	//$("ul.menu").children().text("");
-                })
+                });
+                $("#add").click(function() {
+                	$(".menu").html(obj);
+                });
             });
 
     </script>
 </head>
     
 <body>
-    <button id="remove">삭제</button>
+    <button id="remove">삭제</button><button id="add">추가</button>
     <ul class="menu">
         <li>menu1</li>
         <li>menu2</li>
