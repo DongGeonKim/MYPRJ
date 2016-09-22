@@ -32,11 +32,11 @@
             // 패널의 너비와 높이 구하기
             var panelWidth = parseInt($("#panel").css("width"));
             var panelHeight = parseInt($("#panel").css("height"));
-
+			alert(panelWidth + ":" + panelHeight);
             // 물고기가 최대로 움직일 영역 구하기
             panelWidth = panelWidth - parseInt($fish.css("width"));
             panelHeight = panelHeight - parseInt($fish.css("height"));
-
+            alert(panelWidth + ":" + panelHeight);
             $("#btnStart").click(function() {
                 // 랜덤하게 물고기 위치 구하기
                 var left = parseInt(Math.random() * panelWidth);
@@ -56,9 +56,9 @@
 <body>
 
     <button id="btnStart">
-        클릭하면 물고기가 움직여요.
+        Click! Fish Move~
     </button>
-    <div id="panel">
+    <div id="panel" style="left: 300px;">
         <img src="fish1.png" id="fish">
     </div>
 

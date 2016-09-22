@@ -17,21 +17,41 @@
 		
 	</style>
 	<script  type="text/javascript" src="../../../libs/jquery-1.11.0.min.js"></script>
-	
-
-    <script>
-        /*
-            미션 02: 랜덤하게 스타일 적용하기
-             이번 미션은 다음 실행화면처럼 1초에 한 번씩 신규 노드를 생성한 후
-             글자 크기와 색이 랜덤하게 적용해 패널(#panel)의 자식 노드로 추가하는 것입니다.
-             1. 1초에 한번씩 <span>숫자</span> 태그를 생성해 패널(#panel)에 자식 노드로 추가해주세요.
-             2. 숫자는 1부터 시작 합니다.
-             3. 글자크기는 10px에서 50px 사이의 값으로, 글자색은 랜덤하게 설정해주세요.
-
-         */
+	<script>
+        var count = 0;
+        var $panel = null;
+        
         jQuery(document).ready(function() {
-            // 여기에  풀이를 작성해주세요.
+        	init();
+        	start();
         });
+        
+        function init(){
+        	$panel = $("#panel");
+        }
+        
+        function start(){
+        	setInterval(addTag, 1000);
+        }
+        
+        function addTag(){
+        	var $span = $("<span></span>");
+        	var color = "#"+(parseInt(Math.random()*0xffffff)).toString(16);
+        	var fontSize = (10+parseInt(Math.random()*40))+"px";
+        	
+        	$span.css({
+        		color : color,
+        		fontSize : fontSize,
+        		display : "inline-block"
+        	});
+        	
+        	count++;
+        	$span.html(count);
+        	
+        	$panel.append($span);
+        	
+        	window.scrollTo(0,window.document.body.scrollHeight);
+        }
     </script>
 </head>
 
