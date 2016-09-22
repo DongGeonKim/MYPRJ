@@ -32,12 +32,17 @@
                     // sw 값을 true<-->false로 변경
                     sw = !sw;
 
-                    // sw가 true 일때는 #target의 src 속성 값을 ch2.png로
-                    // false 일때는 #target의 src 속성 값을 ch3.png로 변경
-                    if (sw == true)
+                    // sw가 true 일때는 #target의 src 속성 값을 ch1.png로
+                    // false 일때는 #target의 src 속성 값을 ch2.png로 변경
+                    if (sw == true){
+                        $img.attr("src", "ch1.png");
+                    	$img.data("data-aaa", "11");
+                    	alert($img.data("data-aaa"));
+                    }else{
                         $img.attr("src", "ch2.png");
-                    else
-                        $img.attr("src", "ch3.png");
+                    	$img.data("data-aaa", "22");
+                    	alert($img.data("data-aaa"));
+                    }
                 });
             })
         </script>
@@ -45,7 +50,7 @@
     </head>
 
     <body>
-        <img src="ch2.png" id="target">
+        <img src="ch2.png" id="target" data-aaa="te">
     </body>
 
 </html>

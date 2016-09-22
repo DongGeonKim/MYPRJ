@@ -33,7 +33,9 @@
                     var $target = $(this);
 
                     // 이미지 상태 정보 변경
+                    alert(!);
                     var sw = !$target.data("sw");
+                    
                     $target.data("sw", sw);
 
                     // sw가 true 일때는 #target의 src 속성 값을 ch2.png로
@@ -44,6 +46,7 @@
                         $target.attr("src", "ch1.png");
                 });
             })
+            
         </script>
 
     </head>
@@ -53,21 +56,21 @@
             <p>
                 테스트1
             </p>
-            <img src="ch2.png" class="target">
+            <img src="ch1.png" class="target">
         </div>
 
         <div class="panel2">
             <p>
                 테스트2
             </p>
-            <img src="ch2.png" class="target">
+            <img src="ch1.png" class="target">
         </div>
 
         <div class="panel3">
             <p>
                 테스트3
             </p>
-            <img src="ch2.png" class="target">
+            <img src="ch1.png" class="target">
         </div>
     </body>
 

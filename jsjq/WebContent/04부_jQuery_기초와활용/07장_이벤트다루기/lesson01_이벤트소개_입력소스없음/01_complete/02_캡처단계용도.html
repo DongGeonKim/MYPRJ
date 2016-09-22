@@ -26,8 +26,8 @@
             document.addEventListener("click",function(e){
                 count++;
                 console.log("1. doument phase="+e.eventPhase, "count="+count);
-                e.stopPropagation();
-
+                //e.stopPropagation();
+                alert(e.bubbles);
             },true);
 
 
@@ -49,7 +49,7 @@
             $(document).on("click",function(e){
                 count++;
                 console.log("4. doument phase="+e.eventPhase, "count="+count);
-
+				alert(e.bubbles);
             });
 
 
@@ -66,7 +66,7 @@
             $("#a").on("click", function(e){
                 count++;
                 console.log("6. A phase="+e.eventPhase, "count="+count);
-
+				//e.stopPropagation();
             });
 
             //  타겟/버블링 단계에 이벤트 등록
