@@ -16,10 +16,9 @@
     div.banner {
         width:260px;
         height:166px;
-       border:1px solid #000;
-       
-       /* position: relative; */
-      
+       	border:1px solid #000;
+       	position: relative;
+      	/* overflow:hidden; */
     }
     
     div.banner-container{
@@ -68,6 +67,7 @@
             // index 번째 배너 위치 값 구하기
             var marginLeft = -(index*bannerWidth);
             // 배너 위치 설정하기
+            alert(marginLeft);
             $banner.css("marginLeft", marginLeft);
         }
 

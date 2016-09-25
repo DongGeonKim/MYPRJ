@@ -44,12 +44,13 @@
         
         $("#panel").click(function(e){
             // 클릭한 위치 값 알아내기
+            
             var offsetX = e.pageX - $(this).offset().left;
             var offsetY = e.pageY - $(this).offset().top;
             
             // 위치 값을 문자열로 만들기
             var strInfo = "offsetX = "+offsetX+", offsetY = "+offsetY;
-            
+            alert(e.pageX + ":" + e.pageY + ":" + $(this).offset().left + ":" + $(this).offset().top);
             // 클릭한 위치 값 출력
             $info.html(strInfo);
             
