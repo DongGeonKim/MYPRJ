@@ -27,6 +27,7 @@
 
 
                 // 실제 이벤트를 발생한 노드(target 속성)가 <li> 태그인 경우만 처리
+                alert(e.target.tagName);
                 if(e.target.tagName=="LI"){
                     // 클릭한 메뉴 아이템의 정보 출력
                     alert($(e.target).html());
