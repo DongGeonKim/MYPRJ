@@ -63,7 +63,7 @@
        $("#move").click(function(e){
            // 물고기가 이동할 end 위치 구하기
            var endX = $("#parent1").innerWidth()-$fish.outerWidth()-parseInt($fish.css("margin-right"));
-           console.log($("#parent1").innerWidth(),$fish.outerWidth());
+           console.log($("#parent1").innerWidth(),$fish.outerWidth(),parseInt($fish.css("margin-right")));
            // 물고기 움직이기
            $fish.css("left", endX);
        })
