@@ -86,12 +86,12 @@
             var $tabMenu = $(".tab-menu");
             // 탭메뉴 위치 구하기
             var tabMenuPos = $tabMenu.offset().top;
-
+			
             // 스크롤 이벤트 등록
             $(window).on("scroll",function(){
                 // 스크롤 위치 값 구하기
                 var scrollY = window.pageYOffset;
-
+				console.log(tabMenuPos , scrollY);
                 // 스크롤 위치 값이 탭메뉴 위치 보다 큰 경우만 탭메뉴에 fixed 클래스 적용. 그렇지 않은 경우 fixed 클래스 제거
                 if(scrollY>tabMenuPos){
                     $tabMenu.addClass("fixed");
