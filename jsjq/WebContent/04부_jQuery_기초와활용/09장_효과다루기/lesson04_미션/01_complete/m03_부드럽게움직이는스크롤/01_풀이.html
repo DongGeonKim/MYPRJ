@@ -52,8 +52,9 @@
         // top 버튼 클릭 처리
         $("#gotoTop").click(function(){
             // 최 상단으로 이동
-            // window.scrollTo(0,0);
-            $("html, body").animate({
+            //window.scrollTo(0,0);
+            //document.body.scrollTop = 0;
+            $("body").animate({
                 scrollTop:0
             },500, "easeOutCubic"); 
         })
