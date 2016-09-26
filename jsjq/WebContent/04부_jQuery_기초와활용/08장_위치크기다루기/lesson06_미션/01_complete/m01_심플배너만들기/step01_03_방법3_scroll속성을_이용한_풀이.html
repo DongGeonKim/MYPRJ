@@ -17,7 +17,7 @@
        width:260px;
        height:166px;
        border:1px solid #000;
-       overflow:hidden;
+       overflow:scroll;
     }
     div.banner-container{
         width:1300px;  /* 260*5 */
@@ -57,7 +57,7 @@
         // 배너 개수 구하기
         var bannerLength = $banner.find("img").length;
         // 배너 하나의 너비 구하기
-        var bannerWidth=$banner.width();
+        var bannerWidth = $banner.width();	//260
         // 현재 보여지고 있는 배너의 index 값 저장 변수
         var currentIndex = 0;
 
