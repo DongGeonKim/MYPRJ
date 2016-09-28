@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="jquery-1.11.0.js"></script>
+<script type="text/javascript">
+function doA(){
+	alert("doA...");
+}
+
+$(document).ready(function(){
+	$("#aaa").click(function(){
+		function doA(){
+			alert("inner doA...");
+		}
+		
+		doA();
+	});
+});
+</script>
+<body>
+<a href="#" id="aaa">aaaaaa</a>
+</body>
+</html>

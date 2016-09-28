@@ -70,6 +70,7 @@
                 this.$images = $(selector);        
             }
             
+            
             // 이미지 출력 메서드 추가 
             SimpleGallery.prototype.showGallery=function(){    
                 // 이미지 개수 구하기.
@@ -100,7 +101,6 @@
             }
             // 플러그인 생성
             $.fn.simpleGallery=function(optionList){
-               
                 this.each(function(index){
                     // 기본 옵션 값과 사용자 옵션 값을 합치기
                     var options = $.extend(null, $.simpleGalleryDefOptions, optionList[index]);          

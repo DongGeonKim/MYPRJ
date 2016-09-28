@@ -27,14 +27,14 @@
 		}
 
 		// 함수 호출
-		showInfo(userInfo);
+		//showInfo(userInfo);
 		// 함수에서 데이터 사용
-		function showInfo(userInfo){
+		function showInfo(){
 			// 기본 사용자 정보와 신규 사용자 정보를 합치기
 			userInfo = $.extend({}, defaults, userInfo);
 			document.write("name = "+userInfo.userName, ", id = "+userInfo.id, ", nickName = "+userInfo.nickName, ", age = "+userInfo.age, ", address = "+userInfo.address);
 		}
-
+		showInfo();
 
 
 	</script>

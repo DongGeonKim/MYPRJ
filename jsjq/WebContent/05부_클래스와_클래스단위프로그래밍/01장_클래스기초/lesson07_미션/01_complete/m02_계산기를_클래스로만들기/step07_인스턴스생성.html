@@ -70,7 +70,7 @@
         //요소 초기화
         Calculator.prototype.init=function(){
             // 계산기 내부에서 계속해서 사용할 노드를 미리 찾아 변수에 담아 줍니다.
-            this.$value1= $("#val1");
+            this.val = $("#val1").val();
             this.operator= $("#op");
             this.$value2= $("#val2");
             this.$output = $("#output");
