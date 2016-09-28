@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript">
+/*1. 클래스선언과 동시에 인스턴스 자동생성*/
+var obj1 = {
+		cnt:1,
+		doA:function(){
+			return "doA";
+		}
+}
+alert(obj1.cnt + ":" + obj1.doA());
+
+/*2. 인스턴스 생성*/
+function Obj2(){
+	this.cnt=2;
+	this.doB = function(){
+		return "doB";
+	}
+}
+var obj2 = new Obj2();
+alert(obj2.cnt + ":" + obj2.doB());
+
+/*3. 인스턴스 생성*/
+function Obj3(){
+	this.cnt=3;
+}
+Obj3.prototype.doC = function(){
+	return "doC";
+}
+var obj3 = new Obj3();
+alert(obj3.cnt + ":" + obj3.doC());
+
+/*4. 인스턴스 미생성이지만 사용 가능(유틸리티성 기능을 담을때 사용)*/
+function Obj4(){
+	
+}
+Obj4.cnt = 4;
+Obj4.doD = function(){
+	return "doD";
+}
+alert(Obj4.cnt + ":" + Obj4.doD());
+</script>
+<body>
+<h3>1. 클래스선언과 동시에 인스턴스 자동생성</h3>
+<h3>2. 인스턴스 생성</h3>
+<h3>3. 인스턴스 생성</h3>
+<h3>4. 인스턴스 미생성이지만 사용 가능(유틸리티성 기능을 담을때 사용)</h3>
+</body>
+</html>
